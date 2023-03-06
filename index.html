@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="script.js"></script>
+    <title>Sheet</title>
+</head>
+
+<body>
+    <p>Discord Webhook:<input data-bind="value: webhook"></p>
+    <div class="app row">
+        <div class="col leftContainer">
+            <div class="name">
+                <p>Name:</p>
+                <input data-bind="value: name">
+            </div>
+            <div class="hp">
+                <p>Current/Maximum</p>
+                <p></p><input class="current" data-bind="value:hpCurrent">/<input class="maximum"
+                    data-bind="value:hpMaximum"></p>
+            </div>
+            <div class="dices">
+                <p>Flat checks:</p>
+                <button class="flatRoll waves-effect waves-light btn" data-size="4">d4</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="6">d6</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="8">d8</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="10">d10</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="12">d12</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="20">d20</button>
+                <button class="flatRoll waves-effect waves-light btn" data-size="100">d100</button>
+
+            </div>
+            <div class="rollLog">
+                <p><textarea readonly data-bind="text: rollLog"></textarea></p>
+                <button class="clearRollLog">Clear Log</button>
+            </div>
+        </div>
+        <div class="col modifiersContainer">
+            <div class="modifier">
+                <p>Str</p>
+                <input data-bind="value: strMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Dex</p><input data-bind="value: dexMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Con</p><input data-bind="value: conMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Int</p><input data-bind="value: intMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Wis</p><input data-bind="value: wisMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Cha</p><input data-bind="value: chaMod"><button class="roll">Roll</button>
+            </div>
+            <div class="modifier">
+                <p>Prof:</p><input data-bind="value: profMod"><button class="roll">Roll</button>
+            </div>
+
+        </div>
+        <div class="col s4">
+            <div class="skills">
+                <div class="column">
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: acrProf">Acrobatics:</p><input
+                            data-bind="value: acrSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: aniProf">Animal Handling:</p><input
+                            data-bind="value: aniSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: arcProf">Arcana:</p><input
+                            data-bind="value: arcSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: athProf">Athletics:</p><input
+                            data-bind="value: athSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: decProf">Deception:</p><input
+                            data-bind="value: decSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: hisProf">History:</p><input
+                            data-bind="value: hisSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: insProf">Insight:</p><input
+                            data-bind="value: insSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: intProf">Intimidation:</p><input
+                            data-bind="value: intSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: invProf">Investigation:</p><input
+                            data-bind="value: invSkill"><button class="roll">Roll</button>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: medProf">Medicine:</p><input
+                            data-bind="value: medSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: natProf">Nature:</p><input
+                            data-bind="value: natSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: percProf">Perception:</p><input
+                            data-bind="value: percSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: perfProf">Performance:</p><input
+                            data-bind="value: perfSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: persProf">Persuasion:</p><input
+                            data-bind="value: persSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: relProf">Religion:</p><input
+                            data-bind="value: relSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: sleProf">Sleight of Hand:</p><input
+                            data-bind="value: sleSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: steProf">Stealth:</p><input
+                            data-bind="value: steSkill"><button class="roll">Roll</button>
+                    </div>
+                    <div class="skill">
+                        <p><input type="checkbox" data-bind="checked: surProf">Survival:</p><input
+                            data-bind="value: surSkill"><button class="roll">Roll</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col s2">
+            <div class="attacks">
+                <div class="header">
+                    <p>Actions <button>+</button></p>
+                    
+                </div>
+                <div class="list" data-bind="foreach: attacks">
+                    <div class="item" data-bind="attr:{title:title}">
+                        <p data-bind="text: name"></p>
+                        <p data-bind="text: rolls()"></p>
+                        <button class="rollItem" data-bind="click: rollAttack">Attack</button>
+                        <button class="rollItem" data-bind="click: rollDamage">Damage</button>
+                        <button class="edit" data-bind="click: edit">edit</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col ">
+            <div class="inventoryContainer">
+                <div class="header">
+                    <p>Inventory</p>
+                </div>
+                <textarea data-bind="value: inventory"></textarea>
+            </div>
+            <div class="notesContainer">
+                <div class="header">
+                    <p>Notes</p>
+                </div>
+                <textarea data-bind="value: notes"></textarea>
+            </div>
+            <div class="additionalContainer">
+                <div class="header">
+                    <p>Other skills&tricks</p>
+                </div>
+                <textarea data-bind="value: otherStuff"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="popup">
+        <button class="close">X</button>
+        <table data-bind="with: popupAttack">
+            <thead>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Attack Mod</td>
+                <td>Damage Dices</td>
+                <td>Damage Mod</td>
+            </thead>
+            <tr>
+                <td><input data-bind="value: name"></td>
+                <td><textarea data-bind="value: title"></textarea></td>
+                <td><select data-bind="options:$root.atrMods,value: attMod, valueAllowUnset: true"></select>
+                    <p data-bind="text: attackBonus"></p>
+                </td>
+                <td>
+                    <p>Amount/Size</p>
+                    <div class="diceInput" data-bind="foreach: diceArray">
+                        <div class="diceSet">
+                            <input data-bind="value:$rawData.size">
+                            <input data-bind="value:$rawData.amount">
+                        </div>
+                    </div>
+                    <button class="add" data-bind="click:addDice">+</button><button class="remove"
+                        data-bind="click:removeDice">-</button>
+
+                </td>
+                <td><select data-bind="options: $root.atrMods,value: damMod"></select>
+                    <p data-bind="text: damBonus"></p>
+                </td>
+                <td><button class="save" data-bind="click:save">Add(beware of duplicates)</button></td>
+                <td><button class="save" data-bind="click:removeSelf">Delete</button></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

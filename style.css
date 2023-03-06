@@ -1,0 +1,115 @@
+html {
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    color:rgb(208, 217, 224);
+    height: 100vh;
+    background: hsla(84, 56%, 5%, 1);
+    background: linear-gradient(180deg, hsla(84, 56%, 5%, 1) 0%, hsla(261, 84%, 7%, 1) 100%);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+.leftContainer{
+    width:15%
+}
+.leftContainer textarea{
+    resize: vertical;
+}
+input, textarea,button{
+    color:rgb(210, 218, 226);
+}
+button{
+    border: 1px solid white;
+    background-color: black;
+}
+body {
+    height: 100%;
+    margin: 1%;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+.modifier {
+    box-shadow: 0 4px 2px -2px black;
+    margin: 5% 
+}
+.modifier p {
+    text-align: center;
+}
+input {
+    width: 15%;
+}
+.app {
+    display: flex;
+    flex-wrap: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.app div {
+    margin: 0.5em;
+}
+.skills {
+    display: flex;
+}
+button.edit {
+    margin-left: 10%;
+}
+#popup {
+    visibility: hidden;
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    top: 10%;
+    background-color: rgb(0, 0, 0);
+}
+.col {
+    box-shadow: 0px 20px 17px -10px rgba(245, 245, 245, 0.301);
+    border-radius: 16px 16px 16px 16px;
+    border: 2px solid #7a7a7a;
+}
+.modifiersContainer {
+    width: 5%;
+}
+.modifiersContainer input {
+    width: 45%;
+}
+.skills .column {
+    width: 50% 
+}
+.skills .column div {
+    border: 1px solid #000000;
+    border-radius: 0%;
+    box-shadow: 1px -2px 0px 0px rgba(0, 0, 0, 0.46) inset;
+}
+.skills .column div input {
+    width: 40% 
+}
+.skill p input {
+    margin: -10%;
+}
+.skill input {
+    margin-top: -10%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+}
+input {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.46) inset;
+    border: 0px;
+    font-size: larger;
+}
+.name input {
+    width: 100%;
+}
+textarea {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 150%;
+}
+.attacks .item{
+    border-top: 1px solid white;
+    padding-top:1% 
+}
+.rollLog textarea{
+    width: 100%;
+}
