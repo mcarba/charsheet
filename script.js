@@ -140,7 +140,7 @@ var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attB
         return this.getAtrMod(this.damMod())
     })
     this.diceArrayString = ko.computed(function () {
-        //console.log(this.diceArray()[0].size())
+    
         let res = ""
         this.diceArray().forEach(d => { res += d.size() + 'd' + d.amount() + "+" })
 
@@ -161,7 +161,7 @@ var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attB
         component.diceArray.push(new Dice(0, 0))
     }
     this.removeDice = function (component) {
-        console.log(component.diceArray)
+ 
         component.diceArray.pop()
     }
     this.save = function (component) {
@@ -255,7 +255,7 @@ function roll(diceArray, mod = -10000) {
     var log = ""
     var res = 0
     diceArray.forEach(d => {
-        console.log(d)
+      
         var s=d.size?d.size(): d[0]
         var a=d.amount?d.amount(): d[1]
         for (let index = 0; index < s; index++) {
@@ -290,7 +290,7 @@ vm.popupAttack = ko.observable(new Attack())
 var popup = function (attack) {
     this.attack = attack ? attack : new Attack('', '', [new Dice(1, 2)], 0, 0)
     vm.popupAttack(this.attack)
-    console.log(vm.popupAttack())
+    
 
     document.querySelector("#popup").style.visibility = "visible"
 
@@ -320,7 +320,6 @@ window.addEventListener("load", () => {
     loadFromStorage();
     setInterval(() => {
         localStorage.setItem("userData", ko.toJSON(vm))
-        console.log('saved');
     }, 10000);
 
 })
