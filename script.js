@@ -276,7 +276,7 @@ function roll(diceArray, mod = -10000) {
     vm.rollLog(log + "=" + res + '\n' + vm.rollLog())
     var msg="I rolled:"
     diceArray.forEach(d => {
-        msg+=d[0]+"d"+d[1]+" "
+        msg+=d.size?d.size(): d[0]+"d"+d.amount?d.amount(): d[1]+" "
     })
     msg+=".\r\n I got: "+log+"="+res
     if (vm.webhook()!="")
