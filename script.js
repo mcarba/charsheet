@@ -106,7 +106,7 @@ var Dice = function (size, amount) {
     this.amount = ko.observable(amount)
 }
 vm.atrMods = ['', 'Str', "Dex", 'Con', 'Int', 'Wis', 'Cha']
-var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attBonus = "Dex", damBonus = "0") {
+var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attBonus = "Dex", damBonus = "0",isProf=false) {
 
     this.getAtrMod = function (params) {
         switch (params) {
@@ -128,12 +128,13 @@ var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attB
 
         }
     }
+    this.isProf=ko.observable(isProf)
     this.name = ko.observable(name)
     this.title = ko.observable(title)
     this.diceArray = ko.observableArray(diceArray)
     this.attMod = ko.observable(attBonus)
     this.attackBonus = ko.computed(() => {
-        return this.getAtrMod(this.attMod())
+        return parseInt(this.getAtrMod(this.attMod()))+(this.isProf()?parseInt(vm.profMod()):0)
     })
     this.damMod = ko.observable(damBonus)
     this.damBonus = ko.computed(() => {
