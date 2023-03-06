@@ -184,6 +184,10 @@ vm.attacks = ko.observableArray([
 
 function loadFromStorage() {
     let s = JSON.parse(localStorage.getItem('userData'));
+    if (!s){
+        return
+    }
+    
     vm.strMod(s.strMod);
     vm.dexMod(s.dexMod);
     vm.conMod(s.conMod);
