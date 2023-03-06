@@ -316,6 +316,7 @@ window.addEventListener("load", () => {
     loadFromStorage();
     setInterval(() => {
         localStorage.setItem("userData", ko.toJSON(vm))
+        console.log('saved');
     }, 10000);
 
 })
