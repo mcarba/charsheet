@@ -65,11 +65,11 @@ var SavingThrow=function(name='',isProf=false,mod='') {
 }
 vm.savingThrows=ko.observableArray([
     new SavingThrow('S',false,'Str'),
-    new SavingThrow('D',false,'Str'),
-    new SavingThrow('C',false,'Str'),
-    new SavingThrow('I',false,'Str'),
-    new SavingThrow('W',false,'Str'),
-    new SavingThrow('C',false,'Str'),
+    new SavingThrow('D',false,'Dex'),
+    new SavingThrow('C',false,'Con'),
+    new SavingThrow('I',false,'Int'),
+    new SavingThrow('W',false,'Wis'),
+    new SavingThrow('C',false,'Cha'),
 
 ])
 
