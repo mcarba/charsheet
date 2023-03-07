@@ -22,10 +22,26 @@
                 <p>Name:</p>
                 <input data-bind="value: name">
             </div>
-            <div class="hp">
-                <p>Current/Maximum</p>
-                <p></p><input class="current" data-bind="value:hpCurrent">/<input class="maximum"
-                    data-bind="value:hpMaximum"></p>
+            <div class="hpAndAc">
+                <div class="hp">
+                    <p>Current/Maximum</p>
+                    <p></p><input class="current" data-bind="value:hpCurrent">/<input class="maximum"
+                        data-bind="value:hpMaximum"></p>
+                </div>
+                <div class="ac">
+                    <p>AC</p><input data-bind="value: ac">
+                </div>
+            </div>
+            <div class="defences">
+                <div class="savingThrows" data-bind="foreach:savingThrows">
+                    <div class="savingThrow">
+                        <input type="checkbox" data-bind="checked: isProf">
+                        <p data-bind="text: name"></p>
+                        <p data-bind="text:value"></p>
+                        <button data-bind="click: rollSave">Roll</button>
+                    </div>
+                </div>
+
             </div>
             <div class="dices">
                 <p>Flat checks:</p>
@@ -154,7 +170,7 @@
             <div class="attacks">
                 <div class="header">
                     <p>Actions <button>+</button></p>
-                    
+
                 </div>
                 <div class="list" data-bind="foreach: attacks">
                     <div class="item" data-bind="attr:{title:title}">
@@ -201,7 +217,7 @@
                 <td>Damage Mod</td>
             </thead>
             <tr>
-                <td><input data-bind="value: name"></td>
+                <td><input class="popupName" data-bind="value: name"></td>
                 <td><textarea data-bind="value: title"></textarea></td>
                 <td><select data-bind="options:$root.atrMods,value: attMod, valueAllowUnset: true"></select>
                     <p><input type="checkbox" data-bind="checked: isProf"> prof</p>

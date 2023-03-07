@@ -28,19 +28,51 @@ var vm = {
     surProf: ko.observable(false),
     rollLog: ko.observable(""),
     name: ko.observable(""),
-    webhook: ko.observable("")
+    webhook: ko.observable(""),
+    ac:ko.observable("")
 
 }
-vm.atrMods = ko.observableArray([
-    { n: 'Strength', v: vm.strMod },
-    { n: 'Dexterity', v: vm.dexMod },
-    { n: 'Constitution', v: vm.conMod },
-    { n: 'Intellect', v: vm.intMod },
-    { n: 'Wisdom', v: vm.wisMod },
-    { n: 'Charisma', v: vm.chaMod },
+vm.getAtrMod = function (params) {
+    switch (params) {
+        case "Str":
+            return vm.strMod()
+        case "Dex":
+            return vm.dexMod()
+        case "Con":
+            return vm.conMod()
+        case "Int":
+            return vm.intMod()
+        case "Wis":
+            return vm.wisMod()
+        case "Cha":
+            return vm.chaMod()
 
+        default:
+            return 0
+
+    }
+}
+var SavingThrow=function(name='',isProf=false,mod='') {
+
+    this.isProf=ko.observable(isProf)
+    this.name=ko.observable(name)
+    this.value=ko.computed(()=>{
+        return parseInt(vm.getAtrMod(mod))+(this.isProf() ?parseInt(vm.profMod()):0)
+    })
+    this.rollSave=function(){
+        roll([[1,20]],this.value())
+    }
+}
+vm.savingThrows=ko.observableArray([
+    new SavingThrow('S',false,'Str'),
+    new SavingThrow('D',false,'Str'),
+    new SavingThrow('C',false,'Str'),
+    new SavingThrow('I',false,'Str'),
+    new SavingThrow('W',false,'Str'),
+    new SavingThrow('C',false,'Str'),
 
 ])
+
 vm.hpCurrent = ko.observable()
 vm.hpMaximum = ko.observable()
 vm.notes = ko.observable()
@@ -108,37 +140,18 @@ var Dice = function (size, amount) {
 vm.atrMods = ['', 'Str', "Dex", 'Con', 'Int', 'Wis', 'Cha']
 var Attack = function (name = '', title = '', diceArray = [new Dice(1, 4)], attBonus = "Dex", damBonus = "0",isProf=false) {
 
-    this.getAtrMod = function (params) {
-        switch (params) {
-            case "Str":
-                return vm.strMod()
-            case "Dex":
-                return vm.dexMod()
-            case "Con":
-                return vm.conMod()
-            case "Int":
-                return vm.intMod()
-            case "Wis":
-                return vm.wisMod()
-            case "Cha":
-                return vm.chaMod()
-
-            default:
-                return 0
-
-        }
-    }
+    
     this.isProf=ko.observable(isProf)
     this.name = ko.observable(name)
     this.title = ko.observable(title)
     this.diceArray = ko.observableArray(diceArray)
     this.attMod = ko.observable(attBonus)
     this.attackBonus = ko.computed(() => {
-        return parseInt(this.getAtrMod(this.attMod()))+(this.isProf()?parseInt(vm.profMod()):0)
+        return parseInt(vm.getAtrMod(this.attMod()))+(this.isProf()?parseInt(vm.profMod()):0)
     })
     this.damMod = ko.observable(damBonus)
     this.damBonus = ko.computed(() => {
-        return this.getAtrMod(this.damMod())
+        return vm.getAtrMod(this.damMod())
     })
     this.diceArrayString = ko.computed(function () {
     
@@ -221,6 +234,7 @@ function loadFromStorage() {
     vm.hpCurrent(s.hpCurrent);
     vm.hpMaximum(s.hpMaximum);
     vm.name(s.name);
+    vm.ac(s.ac)
     vm.webhook(s.webhook)
     vm.attacks.removeAll();
     s.attacks.forEach(a => {
