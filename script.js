@@ -53,7 +53,7 @@ vm.getAtrMod = function (params) {
     }
 }
 var SavingThrow=function(name='',isProf=false,mod='') {
-
+    this.mod=ko.observable(mod)
     this.isProf=ko.observable(isProf)
     this.name=ko.observable(name)
     this.value=ko.computed(()=>{
@@ -245,6 +245,10 @@ function loadFromStorage() {
         vm.attacks.push(new Attack(a.name, a.title, cotlet, a.attMod, a.damMod));
 
     });
+    vm.savingThrows.removeAll()
+    s.savingThrows.forEach(a=>{
+        vm.savingThrows.push(new SavingThrow(a.name,a.isProf,a.mod))
+    })
 }
 function sendToDiscord(text="BeepBoop") {
     const data = {
@@ -334,7 +338,8 @@ window.addEventListener("load", () => {
 
     loadFromStorage();
     setInterval(() => {
-        localStorage.setItem("userData", ko.toJSON(vm))
+        localStorage.setItem("userData", ko.toJSON(vm));
+        //console.log('saved')
     }, 10000);
 
 })
